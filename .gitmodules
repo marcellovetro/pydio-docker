@@ -1,0 +1,3 @@
+[submodule "pydio-core"]
+	path = pydio-core
+	url = https://github.com/pydio/pydio-core.git

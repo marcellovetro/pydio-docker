@@ -72,13 +72,22 @@ RUN update-rc.d mysql defaults
 # Install Pydio
 ENV PYDIO_VERSION 6.2.0
 WORKDIR /var/www
-RUN wget http://downloads.sourceforge.net/project/ajaxplorer/pydio/stable-channel/${PYDIO_VERSION}/pydio-core-${PYDIO_VERSION}.zip && \
-    unzip pydio-core-${PYDIO_VERSION}.zip && \
-    mv pydio-core-${PYDIO_VERSION} pydio-core && \
+#RUN wget http://downloads.sourceforge.net/project/ajaxplorer/pydio/stable-channel/${PYDIO_VERSION}/pydio-core-${PYDIO_VERSION}.zip && \
+#    unzip pydio-core-${PYDIO_VERSION}.zip && \
+#    mv pydio-core-${PYDIO_VERSION} pydio-core && \
+#    chown -R www-data:www-data /var/www/pydio-core && \
+#    chmod -R 770 /var/www/pydio-core && \
+#    chmod 777  /var/www/pydio-core/data/files/ && \
+#    chmod 777  /var/www/pydio-core/data/personal/
+
+RUN mkdir -p /var/www/pydio-core && \
+    mkdir -p /var/www/pydio-core/data/files && \
+    mkdir -p /var/www/pydio-core/data/personal && \
     chown -R www-data:www-data /var/www/pydio-core && \
     chmod -R 770 /var/www/pydio-core && \
     chmod 777  /var/www/pydio-core/data/files/ && \
     chmod 777  /var/www/pydio-core/data/personal/
+
 
 WORKDIR /
 RUN ln -s /var/www/pydio-core/data pydio-data 
