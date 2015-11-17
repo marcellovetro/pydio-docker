@@ -33,7 +33,7 @@ A mysql server with a database is ready, you can use it with this parameters :
 
 Get the latest version from github
 
-    git clone https://github.com/kdelfour/pydio-docker
+    git clone --recursive https://github.com/marcellovetro/pydio-docker.git
     cd pydio-docker/
 
 Build it

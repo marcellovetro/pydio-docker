@@ -46,6 +46,7 @@ RUN sed -i -e "s/output_buffering\s*=\s*4096/output_buffering = Off/g" /etc/php5
     sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/fpm/php.ini && \
     sed -i -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 1G/g" /etc/php5/fpm/php.ini && \
     sed -i -e "s/post_max_size\s*=\s*8M/post_max_size = 1G/g" /etc/php5/fpm/php.ini && \
+    sed -i -e 's/;daemonize = yes/daemonize = no/g' /etc/php5/fpm/php-fpm.conf && \
     php5enmod mcrypt
 
 # ------------------------------------------------------------------------------
@@ -80,8 +81,7 @@ WORKDIR /var/www
 #    chmod 777  /var/www/pydio-core/data/files/ && \
 #    chmod 777  /var/www/pydio-core/data/personal/
 
-RUN mkdir -p /var/www/pydio-core && \
-    mkdir -p /var/www/pydio-core/data/files && \
+RUN mkdir -p /var/www/pydio-core/data/files && \
     mkdir -p /var/www/pydio-core/data/personal && \
     chown -R www-data:www-data /var/www/pydio-core && \
     chmod -R 770 /var/www/pydio-core && \
